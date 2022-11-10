@@ -62,23 +62,57 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
- foreach ($superheroes as $superhero):
-if(strtolower($searching))  strtolower($superhero['name'])|| strtolower($searching)==strtolower($superhero['alias'])){
-    $showHero= $superhero;
-break;
+function hero($text)
+{
+    $text = htmlspecialchars($text);
+    $text = stripslashes($text);
+    $text = trim($text);
+    return $text;
 }
-endforeach;
- 
-echo json_encode($showHero);  
-    ?>
 
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
-    <h3>
-        Superhero not found
-    </h3>
-    <?php
- 
+if($final['REQUEST_METHOD'] == 'GET')
+{
 
+    $Input = isset($_GET["searching"] ) ? $_GET["searching"]: '';
+    $searchQuery = hero($Input);
 
+    if(empty($searchQuery))
+    {
+           
+            echo "<ul>";
+            foreach ($superheroes as $superhero){
+                echo "<li>" . $superhero['name'] . "</li>";
+            }
+            echo "</ul>";
+        }
+    
+        else
+    {
+            $found = false;
+            foreach ($superheroes as $superhero)
+    {
+                if( ($superhero['name'] == $searchQuery) || ($superhero['alias'] == $searchQuery) )
+    {
+                    $found = true;
+                
+                    echo "<h1>RESULT</h1>";
+                    echo "<hr>";
+                    echo "<h3>" . $superhero['alias'] . "</h3>";
+                    echo "<h4> A.K.A. " . $superhero['name'] . "</h4>";
+                    echo "<p>" . $superhero['biography'] . "</p>";
+                    break;
+            
+                }
+            }
+            if($found == false)
+    {
+           
+                echo "<h1>RESULT</h1>";
+                echo "<h4 >Superhero not found! </h4>";
+           
+            
+    
+        }}
+    }
+
+?>
