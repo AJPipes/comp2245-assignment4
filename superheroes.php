@@ -70,7 +70,7 @@ break;
 endforeach;
  
 echo json_encode($showHero);  
-?>
+    ?>
 
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
