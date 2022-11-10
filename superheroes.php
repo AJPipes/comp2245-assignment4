@@ -70,10 +70,10 @@ function hero($text)
     return $text;
 }
 
-if($final['REQUEST_METHOD'] == 'GET')
+if($_SERVER['REQUEST_METHOD'] == 'GET')
 {
 
-    $Input = isset($_GET["searching"] ) ? $_GET["searching"]: '';
+    $Input = isset($_GET["ask"] ) ? $_GET["ask"]: '';
     $searchQuery = hero($Input);
 
     if(empty($searchQuery))
@@ -97,8 +97,8 @@ if($final['REQUEST_METHOD'] == 'GET')
                 
                     echo "<h1>RESULT</h1>";
                     echo "<hr>";
-                    echo "<h3>" . $superhero['alias'] . "</h3>";
-                    echo "<h4> A.K.A. " . $superhero['name'] . "</h4>";
+                    echo "<h3>" . $superhero['name'] . "</h3>";
+                    echo "<h4> A.K.A. " . $superhero['alias'] . "</h4>";
                     echo "<p>" . $superhero['biography'] . "</p>";
                     break;
             
