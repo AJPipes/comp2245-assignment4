@@ -62,11 +62,23 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-
+ foreach ($superheroes as $superhero):
+if(strtolower($searching))  strtolower($superhero['name'])|| strtolower($searching)==strtolower($superhero['alias'])){
+    $showHero= $superhero;
+break;
+}
+endforeach;
+ 
+echo json_encode($showHero);  
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+    <h3>
+        Superhero not found
+    </h3>
+    <?php
+ 
+
+
