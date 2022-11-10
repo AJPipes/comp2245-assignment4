@@ -1,20 +1,39 @@
-(document).ready(function() {
-    var loadBtn = $('#theBtn');
+window.onload = () => {
 
-    loadBtn.on('click', function() {
+    const btn = document.getElementById("search");
+    const textfield = document.getElementById("search");
+    const result = document.getElementById("result");
+    let httpRequest = new XMLHttpRequest();
+    let url = 'superheroes.php';
 
-        $.ajax('superheroes.php', {
-            method: "GET",
-            dataType: 'json'
-        }).done(function(response) {
-            var superheroes = response.superheroes;
+    btn.addEventListener('click', search);
 
-            $('#results').append("<ul></ul>");
-            $(superheroes).each(function() {
-                $('#results ul').append('<li><h3>' + this.name + ' (a.k.a ' + this.alias + ')</h3><p>' + this.email + '</p></li>');
-            });
-        }).fail(function() {
-            alert('There was a problem with the request.');
-        });
-    });
-});
+    function search()
+    {
+      let data = textfield.value;
+      let ext = '?query='+data;
+      httpRequest.onreadystatechange = requestaction;
+      httpRequest.open('GET', url+ext, true);
+      httpRequest.send();
+    }
+
+    function requestaction()
+    {
+      if(httpRequest.readyState === XMLHttpRequest.DONE)
+      {
+        if(httpRequest.status === 200)
+        {
+
+            let response = httpRequest.responseText;
+            result.innerHTML = response;
+
+          }
+          else
+          {
+
+            alert('There is a problem with the request');
+
+          }
+      }
+    }
+  }
