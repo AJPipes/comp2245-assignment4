@@ -1,3 +1,6 @@
+main{
+    margin-left: 20em;
+}
 header{
 
     background-color:#5496BF;
@@ -10,9 +13,16 @@ h1{
 
     color: white;
 }
-
+#searching{
+    border: none;
+    border-radius: 5px;
+    text-indent: 15px;
+    width: 700px;
+    height: 40px;
+    
+}
 hr{
-
+    margin-right: 10em;
     color: black;
 }
 body{
@@ -24,6 +34,10 @@ button{
     background-color: #BF2424;
     color: white;
     padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 70px;
+    height: 40px;
 }
 
 form .input{
@@ -32,5 +46,6 @@ form .input{
     height: 2em;
     border-radius: 5px;
     border: #FFFFFF 1px solid;
+    border: none
 
 }
