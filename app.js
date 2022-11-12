@@ -1,40 +1,21 @@
 
-window.onload = () => {
+window.addEventListener('DOMContentLoaded',(event)=>{
 
-  const btn = document.getElementById("search");
-  const textfield = document.getElementById("search");
-  const result = document.getElementById("result");
-  let httpRequest = new XMLHttpRequest();
-  let url = 'superheroes.php';
+  let sub =document.querySelector("button")
+  let unit = document.getElementById("text")
+  let A = "http://localhost/comp2245-assignment4/superheroes.php?set="
+  sub.onclick= function(){Act()}
 
-  btn.addEventListener('click', search);
+  function Act(){
+      fetch(A+unit.value)
+          .then(response =>  response.text())
+          .then(data =>{
+      let set = document.querySelector(".hero")
+      set.innerHTML= data  
+          })
 
-  function search()
-  {
-    let data = textfield.value;
-    let ext = '?query='+data;
-    httpRequest.onreadystatechange = requestaction;
-    httpRequest.open('GET', url+ext, true);
-    httpRequest.send();
-  }
+      .catch(error =>console.log(error))
+      
+  };
 
-  function requestaction()
-  {
-    if(httpRequest.readyState === XMLHttpRequest.DONE)
-    {
-      if(httpRequest.status === 200)
-      {
-
-          let response = httpRequest.responseText;
-          result.innerHTML = response;
-
-        }
-        else
-        {
-
-          alert('There is a problem with the request');
-
-        }
-    }
-  }
-}
+});
