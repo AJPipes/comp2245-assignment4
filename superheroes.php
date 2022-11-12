@@ -79,16 +79,15 @@ function checks($input, $sup){
 
     function find($input, $superhero){
 
-        if ($input == $superhero['name'])
-                   {AV($superhero);
+        if ($input == $superhero['name']){
+            AV($superhero);
                     return true;}
-        if($input == $superhero['alias'])
-                   {    AV($superhero); 
-                            return true;}
+        if($input == $superhero['alias']){
+                AV($superhero); 
+                   return true;}
     };
  ?>
 <?php 
-
 function AV($arr){
 ?>
 <h3> <?=$arr['name'];?></h3>
@@ -107,7 +106,7 @@ foreach ($superheroes as $superhero):
 
 <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
-</ul> 
+
 <?php
 }
 $Avengers;
