@@ -62,57 +62,59 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-function hero($text)
-{
-    $text = htmlspecialchars($text);
-    $text = stripslashes($text);
-    $text = trim($text);
-    return $text;
+function checks($input, $sup){
+    if($input == ""){
+    {prints($sup);}   
+        return;}
+    foreach($sup as $superhero):
+        
+         $l = find($input, $superhero);
+         if ($l ==true)
+            return;
+    endforeach;
+    ?>
+    <h3>Superhero not found!</h3>
+    <?php
+ }
+
+    function find($input, $superhero){
+
+        if ($input == $superhero['name'])
+                   {AV($superhero);
+                    return true;}
+        if($input == $superhero['alias'])
+                   {    AV($superhero); 
+                            return true;}
+    };
+ ?>
+<?php 
+
+function AV($arr){
+?>
+<h3> <?=$arr['name'];?></h3>
+<h4><?=$arr['alias'];?></h4>
+<p><?=$arr['biography']?></p>
+<?php
 }
+?>      
 
-if($_SERVER['REQUEST_METHOD'] == 'GET')
-{
+<?php 
+function prints($superheroes){ 
+?>
+<?php 
+foreach ($superheroes as $superhero):
+ ?>
 
-    $Input = isset($_GET["ask"] ) ? $_GET["ask"]: '';
-    $searchQuery = hero($Input);
-
-    if(empty($searchQuery))
-    {
-           
-            echo "<ul>";
-            foreach ($superheroes as $superhero){
-                echo "<li>" . $superhero['name'] . "</li>";
-            }
-            echo "</ul>";
-        }
-    
-        else
-    {
-            $found = false;
-            foreach ($superheroes as $superhero)
-    {
-                if( ($superhero['name'] == $searchQuery) || ($superhero['alias'] == $searchQuery) )
-    {
-                    $found = true;
-                
-                    echo "<h1>RESULT</h1>";
-                    echo "<hr>";
-                    echo "<h3>" . $superhero['name'] . "</h3>";
-                    echo "<h4> A.K.A. " . $superhero['alias'] . "</h4>";
-                    echo "<p>" . $superhero['biography'] . "</p>";
-                    break;
-            
-                }
-            }
-            if($found == false)
-    {
-           
-                echo "<h1>RESULT</h1>";
-                echo "<h4 >Superhero not found! </h4>";
-           
-            
-    
-        }}
-    }
-
+<li><?= $superhero['alias']; ?></li>
+<?php endforeach; ?>
+</ul> 
+<?php
+}
+$Avengers;
+if (isset($_GET['set'])) {
+$Avengers =$_GET['set'];
+} else {
+$Avengers="";
+}
+checks($Avengers, $superheroes);
 ?>
