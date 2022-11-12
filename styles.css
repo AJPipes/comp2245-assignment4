@@ -3,9 +3,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     font-size: 18px;
 }
-main{
-    margin-left: 20em;
-}
+
 header{
 
     background-color:#5496BF;
@@ -24,27 +22,41 @@ body{
 
     background-color: #F2F2F2;
 }
-.body{
-    color: white;
-    padding: 10px;
+
+.Search{
+    color: #5496BF;
+    margin-right: 10px;
+}
+.double{
     display: flex;
-    align-items: left;   
+    flex-direction: row;
+    align-items: center;
+   margin-bottom: 100px;
+}
+.double input {
+    height: 30px;
+    width: 400px
 }
 button{
-
     background-color: #BF2424;
     color: white;
-    padding: 5px;
+    padding: 5px ;
     border: none;
     border-radius: 5px;
-    width: 70px;
-    height: 40px;
-    align-items: right;
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    margin-left: 5px;
+    
 }
 .result{
     padding: 30px;
-    background-color: #0c8d8d;
     color: white;
+    background-color:#5496BF;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    text-align: center;
 }
 .hero ul{
 
