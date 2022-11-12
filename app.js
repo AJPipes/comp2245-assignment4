@@ -1,13 +1,13 @@
 
 window.addEventListener('DOMContentLoaded',(event)=>{
 
-  let sub =document.querySelector("button")
-  let unit = document.getElementById("text")
-  let A = "http://localhost/comp2245-assignment4/superheroes.php?set="
-  sub.onclick= function(){Act()}
+  let input =document.querySelector("button")
+  let type = document.getElementById("text")
+  let url = "http://localhost/comp2245-assignment4/superheroes.php?set="
+  input.onclick= function(){Marvel()}
 
-  function Act(){
-      fetch(A+unit.value)
+  function Marvel(){
+      fetch(url+type.value)
           .then(response =>  response.text())
           .then(data =>{
       let set = document.querySelector(".hero")
