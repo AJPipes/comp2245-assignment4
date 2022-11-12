@@ -2,7 +2,7 @@
 window.addEventListener('DOMContentLoaded',(event)=>{
 
   let input =document.querySelector("button")
-  let type = document.getElementById("text")
+  let type = document.getElementById("searching")
   let url = "http://localhost/comp2245-assignment4/superheroes.php?set="
   input.onclick= function(){Marvel()}
 
