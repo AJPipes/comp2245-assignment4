@@ -15,17 +15,16 @@
     </header>
     <body>
         <main>
-             <form id="search"  action= "superheroes.php" method="GET">
-                 <label class= "labelName" >Search by Full Name or Alias</label> <br>
+          <div class = "body"  > 
+                 <div class= "Search">Search by Full Name or Alias</div>
                  <input placeholder="e.g. Captain America or Steve Rogers" type="text" id= "searching" name="ask" size="50">
-                 <button id="theBtn" class= "btn">Search</button>
-             </form>
+                 </div>
+                 <button type= "button" class= "btn">Search</button>
+        </div>
     
-             <div>
-                 <h2>RESULTS</h2>
-                 <hr>
-                 <div id = "result">
-    
+             <div class="result"> 
+                <h3>RESULTS</h3>
+                <div class ="display"> 
                  </div>
              </div>
         </main>     
